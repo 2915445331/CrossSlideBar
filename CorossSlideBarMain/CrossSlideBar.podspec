@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
 		   The main documentation for this project is "CrossSlideBar" You can download this file for the sliding title effect.
                    DESC
-  s.homepage     = "https://github.com/2915445331/CrossSlideBar"
+  s.homepage     = "https://github.com/2915445331/CorossSlideBar"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "流年" => "2915445331@qq.com" }
   s.platform     = :ios
-  s.source       = {:git => "https://github.com/2915445331/CorossSlideBar.git",  :commit => "31bc36f", :tag => s.version}
+  s.source       = {:git => "https://github.com/2915445331/CorossSlideBar.git", :tag => s.version}
   s.source_files  = "CorossSlideBarMain/CrossSlideBar/**/*"
   s.framework  = "UIKit"
   s.requires_arc = true
