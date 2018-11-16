@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "流年" => "2915445331@qq.com" }
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/2915445331/CrossSlideBar.git" ,:commit => "68defea" ,:tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/2915445331/CorossSlideBar.git" ,:commit => "68defea" ,:tag => "#{s.version}" }
   s.source_files  = "CrossSlideBar/*"
   s.framework  = "UIKit"
   s.requires_arc = true
