@@ -9,7 +9,7 @@ Add a header file # import "slideButtonCollectionView. h".
 2、
 Use CocoaPods 
 pod search CrossSlideBar
-#import <Masonry.h>
+#import <CrossSlideBar.h>
 ## Main code examples
 
     @property(nonatomic,strong)slideButtonCollectionView * slideButtonV;
