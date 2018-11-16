@@ -1,15 +1,14 @@
 # CrossSlideBar
-A customizable horizontal slider.
-The main documentation for this project is "CrossSlideBar" You can download this file for the sliding title effect.
+    A customizable horizontal slider.
+    The main documentation for this project is "CrossSlideBar" You can download this file for the sliding title effect.
 
 # Integration method
-1、
-Drag and drop CrossSlideBarr under CrossSlideBarMain into the project.
-Add a header file # import "slideButtonCollectionView. h".
-2、
-Use CocoaPods 
-pod search CrossSlideBar
-#import <CrossSlideBar.h>
+    Drag and drop CrossSlideBarr under CrossSlideBarMain into the project.
+    Add a header file # import "slideButtonCollectionView. h".
+# CocoaPods integration
+    pod search CrossSlideBar
+    #import <CrossSlideBar.h>
+    
 ## Main code examples
 
     @property(nonatomic,strong)slideButtonCollectionView * slideButtonV;
