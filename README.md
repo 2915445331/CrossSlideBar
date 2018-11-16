@@ -7,8 +7,8 @@ Drag and drop CrossSlideBarr under CrossSlideBarMain into the project.
 Add a header file # import "slideButtonCollectionView. h".
 
 # CocoaPods integration
-pod search CrossSlideBar
-#import <slideButtonCollectionView.h>
+    pod search CrossSlideBar
+    #import <slideButtonCollectionView.h>
     
 ## Main code examples
 
