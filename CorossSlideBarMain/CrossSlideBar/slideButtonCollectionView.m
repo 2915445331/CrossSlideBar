@@ -28,7 +28,7 @@
         self.showsHorizontalScrollIndicator = NO;
         // 为网格注册单于格类
         [self registerClass:[slideButtonCollectionViewCell class] forCellWithReuseIdentifier:@"slideButtonCollectionViewCell"];
-
+        
         //        注册页尾
         [self registerClass:[slideButtonFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"slideButtonFooterView"];
         self.cellWeight = 60;
@@ -88,12 +88,14 @@
             cell.bottomLinColor = self.bottomLinSeltedColor;
         }
         cell.bottomLinImage = self.bottomSeletdLinImage;
+        cell.backSeletedColor = self.backSeletedColor;
     }
     else{
         cell.textLabFont = self.textLabFont;
         cell.textColor = self.textColor;
         cell.bottomLinImage = self.bottomLinImage;
         cell.bottomLinColor = self.bottomLinColor;
+        cell.backSeletedColor = self.backColor;
     }
     return cell;
 }
@@ -163,18 +165,33 @@
         [self reloadData];
     }
 }
+//选中底线图片
 -(void)setBottomSeletdLinImage:(UIImage *)bottomSeletdLinImage{
     _bottomSeletdLinImage = bottomSeletdLinImage;
     if (_bottomSeletdLinImage) {
         [self reloadData];
     }
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+//未选中背景色
+-(void)setBackColor:(UIColor *)backColor{
+    _backColor = backColor;
+    if (_backColor) {
+        [self reloadData];
+    }
 }
-*/
+//选中背景色
+-(void)setBackSeletedColor:(UIColor *)backSeletedColor{
+    _backSeletedColor = backSeletedColor;
+    if (_backColor) {
+        [self reloadData];
+    }
+}
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

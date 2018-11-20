@@ -88,12 +88,14 @@
             cell.bottomLinColor = self.bottomLinSeltedColor;
         }
         cell.bottomLinImage = self.bottomSeletdLinImage;
+        cell.backSeletedColor = self.backSeletedColor;
     }
     else{
         cell.textLabFont = self.textLabFont;
         cell.textColor = self.textColor;
         cell.bottomLinImage = self.bottomLinImage;
         cell.bottomLinColor = self.bottomLinColor;
+        cell.backSeletedColor = self.backColor;
     }
     return cell;
 }
@@ -163,9 +165,24 @@
         [self reloadData];
     }
 }
+//选中底线图片
 -(void)setBottomSeletdLinImage:(UIImage *)bottomSeletdLinImage{
     _bottomSeletdLinImage = bottomSeletdLinImage;
     if (_bottomSeletdLinImage) {
+        [self reloadData];
+    }
+}
+//未选中背景色
+-(void)setBackColor:(UIColor *)backColor{
+    _backColor = backColor;
+    if (_backColor) {
+        [self reloadData];
+    }
+}
+//选中背景色
+-(void)setBackSeletedColor:(UIColor *)backSeletedColor{
+    _backSeletedColor = backSeletedColor;
+    if (_backColor) {
         [self reloadData];
     }
 }

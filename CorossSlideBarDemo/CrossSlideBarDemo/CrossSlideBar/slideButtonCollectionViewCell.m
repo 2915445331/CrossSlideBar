@@ -12,6 +12,8 @@
 @property(nonatomic,strong)UILabel * textTitileLab;
 //底线
 @property(nonatomic,strong)UIView * bottomLinView;
+//背景
+@property(nonatomic,strong)UIView * backgroundV;
 @end
 @implementation slideButtonCollectionViewCell
 
@@ -21,6 +23,7 @@
     if (self) {
         [self.contentView addSubview:self.textTitileLab];
         [self.contentView addSubview:self.bottomLinView];
+        [self.contentView insertSubview:self.backgroundV atIndex:0];
     }
     return self;
 }
@@ -39,11 +42,19 @@
     }
     return _bottomLinView;
 }
+#pragma mark - 背景
+-(UIView *)backgroundV{
+    if (!_backgroundV) {
+        _backgroundV = [[UIView alloc]init];
+    }
+    return _backgroundV;
+}
 - (void)layoutSubviews{
     [super layoutSubviews];
     CGFloat textHeight = self.contentView.frame.size.height-self.bottomLinHeight;
     self.textTitileLab.frame = CGRectMake(0, 0, self.contentView.frame.size.width, textHeight);
     self.bottomLinView.frame = CGRectMake(0,textHeight, self.contentView.frame.size.width, self.bottomLinHeight);
+    self.backgroundV.frame = self.contentView.frame;
 }
 -(void)setTextTitleString:(NSString *)textTitleString{
     _textTitleString = textTitleString;
@@ -72,5 +83,9 @@
     if (!self.bottomLinImage) {
         self.bottomLinView.backgroundColor = _bottomLinColor;
     }
+}
+-(void)setBackSeletedColor:(UIColor *)backSeletedColor{
+    _backSeletedColor = backSeletedColor;
+    self.backgroundV.backgroundColor = _backSeletedColor;
 }
 @end

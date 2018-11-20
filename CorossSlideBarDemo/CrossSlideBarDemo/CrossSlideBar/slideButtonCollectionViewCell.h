@@ -21,4 +21,6 @@
 @property(nonatomic,strong)UIImage * bottomLinImage;
 //底线颜色,默认红色
 @property(nonatomic,strong)UIColor * bottomLinColor;
+//背景色
+@property(nonatomic,strong)UIColor * backSeletedColor;
 @end

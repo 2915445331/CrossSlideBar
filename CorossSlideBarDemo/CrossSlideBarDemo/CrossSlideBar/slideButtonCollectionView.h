@@ -19,6 +19,10 @@
 @property(nonatomic,strong)UIColor * textColor;
 //选中字体颜色 默认黑色
 @property(nonatomic,strong)UIColor * textSeltedColor;
+//未选中背景色
+@property(nonatomic,strong)UIColor * backColor;
+//选中背景色
+@property(nonatomic,strong)UIColor * backSeletedColor;
 //选中标题字体 默认16
 @property(nonatomic,strong)UIFont * textSeletedLabFont;
 //底线高度 默认2
@@ -28,7 +32,6 @@
 @property(nonatomic,strong)UIImage * bottomLinImage;
 //选中底线图片
 @property(nonatomic,strong)UIImage * bottomSeletdLinImage;
-
 //底线颜色,默认无
 @property(nonatomic,strong)UIColor * bottomLinColor;
 //选中底线颜色,默认红色
