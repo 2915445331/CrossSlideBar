@@ -12,8 +12,6 @@
 @interface slideButtonCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 //布局流
 @property(nonatomic,strong)UICollectionViewFlowLayout * flow;
-//网格宽度
-@property(nonatomic,assign)CGFloat cellWeight;
 @end
 @implementation slideButtonCollectionView
 
@@ -29,7 +27,8 @@
 
         //        注册页尾
         [self registerClass:[slideButtonFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"slideButtonFooterView"];
-        self.cellWeight = 60;
+        self.cellWeight = @"0";
+        self.cellHeight = @"0";
         self.bottomLinColor = [UIColor redColor];
         self.textLabFont = [UIFont systemFontOfSize:14];
         self.textSeletedLabFont = [UIFont systemFontOfSize:16];
@@ -39,6 +38,7 @@
         self.bottomLinColor = [UIColor clearColor];
         self.textColor = [UIColor blackColor];
         self.bottomLinImage = [UIImage imageNamed:@""];
+        self.rollingDirection = @"横向";
     }
     return self;
 }
@@ -46,8 +46,6 @@
     if (!_flow) {
         //创建流布局对象
         _flow = [[UICollectionViewFlowLayout alloc]init];
-        //设置滚动方向
-        _flow.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     }
     return _flow;
 }
@@ -64,12 +62,25 @@
 #pragma mark - 单元格大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([_rollingDirection isEqualToString:@"横向"]) {
-        return CGSizeMake(self.cellWeight, self.frame.size.height);
+        if ([self.cellWeight floatValue] <= 0) {
+             CGFloat collectionCellW = [self calculateRowWidth:self.titleArr[indexPath.row] Fount:self.textLabFont andHeight:self.frame.size.height]+20;
+            return CGSizeMake(collectionCellW, self.frame.size.height);
+        }
+        else{
+            return CGSizeMake([self.cellWeight floatValue], self.frame.size.height);
+        }
     }
     if ([_rollingDirection isEqualToString:@"竖向"]) {
+        if ([self.cellHeight floatValue] <= 0) {
+            CGFloat collectionCellH = [self getStringHeightWithText:self.titleArr[indexPath.row] font:self.textLabFont viewWidth:self.frame.size.width] + 20;
+            return CGSizeMake(self.frame.size.width,collectionCellH);
+        }
+        else{
+            return CGSizeMake(self.frame.size.width, [self.cellHeight floatValue]);
+        }
         return CGSizeMake(self.frame.size.width, 40);
     }
-    return CGSizeMake(self.cellWeight, self.frame.size.height);
+    return CGSizeMake(0, 0);
 }
 #pragma mark - 上下左右间距
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -109,6 +120,27 @@
     [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     self.ClickTitleReturn(self.titleArr[indexPath.row]);
     [self reloadData];
+}
+#pragma mark - 字符串宽度
+- (CGFloat)calculateRowWidth:(NSString *)string Fount:(UIFont *)fount andHeight:(CGFloat)height{
+    NSDictionary *dic = @{NSFontAttributeName:fount};  //指定字号
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(0, height)/*计算宽度时要确定高度*/ options:NSStringDrawingUsesLineFragmentOrigin |
+                   NSStringDrawingUsesFontLeading attributes:dic context:nil];
+    return rect.size.width;
+}
+#pragma mark - 返回文字占用高度
+-(CGFloat)getStringHeightWithText:(NSString *)text font:(UIFont *)font viewWidth:(CGFloat)width
+{
+    // 设置文字属性 要和label的一致
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    CGSize maxSize = CGSizeMake(width, MAXFLOAT);
+    
+    NSStringDrawingOptions options = NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading;
+    
+    // 计算文字占据的高度
+    CGSize size = [text boundingRectWithSize:maxSize options:options attributes:attrs context:nil].size;
+    //    当你是把获得的高度来布局控件的View的高度的时候.size转化为ceilf(size.height)。
+    return  ceilf(size.height);
 }
 #pragma mark - 标题文字
 -(void)setTitleArr:(NSArray *)titleArr{
@@ -213,7 +245,15 @@
     else{
         _cellIndexPath = self.titleArr.count-1;
     }
-        
+}
+#pragma mark - 设置标题宽度
+-(void)setCellWeight:(NSString *)cellWeight{
+    _cellWeight = cellWeight;
+    [self reloadData];
+}
+-(void)setCellHeight:(NSString *)cellHeight{
+    _cellHeight = cellHeight;
+    [self reloadData];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

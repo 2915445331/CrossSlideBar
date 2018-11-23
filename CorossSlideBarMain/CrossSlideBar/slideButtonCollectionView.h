@@ -15,6 +15,10 @@
 @property(nonatomic,assign)NSInteger cellIndexPath;
 //滚动方向(横向、竖向 填写其他默认横向)
 @property(nonatomic,strong)NSString * rollingDirection;
+//设置标题宽度 默认 @"0"（仅限横向，竖向默认控件宽度且无法更改,注意如若设置过cellWeight将改变所有标题同一宽度）如若不设置将自动计算 titleArr 宽度
+@property(nonatomic,strong)NSString * cellWeight;
+//设置标题宽度 默认 @"0"（仅限竖向，横向默认控件高度且无法更改,注意如若设置过cellHeight 将改变所有标题同一高度）如若不设置将自动计算 titleArr 高度
+@property(nonatomic,strong)NSString * cellHeight;
 //标题数组
 @property(nonatomic,strong)NSArray * titleArr;
 //标题字体 默认14
