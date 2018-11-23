@@ -14,8 +14,6 @@
 @property(nonatomic,strong)UICollectionViewFlowLayout * flow;
 //网格宽度
 @property(nonatomic,assign)CGFloat cellWeight;
-//选中单元格
-@property(nonatomic,assign)NSInteger cellIndexPath;
 @end
 @implementation slideButtonCollectionView
 
@@ -205,6 +203,17 @@
         self.flow.scrollDirection = UICollectionViewScrollDirectionVertical;
         [self reloadData];
     }
+}
+#pragma mark - 设置选中
+-(void)setCellIndexPath:(NSInteger)cellIndexPath{
+    _cellIndexPath = cellIndexPath;
+    if (_cellIndexPath < self.titleArr.count) {
+        [self reloadData];
+    }
+    else{
+        _cellIndexPath = self.titleArr.count-1;
+    }
+        
 }
 /*
 // Only override drawRect: if you perform custom drawing.

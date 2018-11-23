@@ -11,6 +11,8 @@
 @interface slideButtonCollectionView : UICollectionView
 //返回点击
 @property(nonatomic,copy)void (^ClickTitleReturn) (NSString * titleIndex);
+//手动设置选中
+@property(nonatomic,assign)NSInteger cellIndexPath;
 //滚动方向(横向、竖向 填写其他默认横向)
 @property(nonatomic,strong)NSString * rollingDirection;
 //标题数组
