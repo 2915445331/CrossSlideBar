@@ -65,6 +65,12 @@
 }
 #pragma mark - 单元格大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_rollingDirection isEqualToString:@"横向"]) {
+        return CGSizeMake(self.cellWeight, self.frame.size.height);
+    }
+    if ([_rollingDirection isEqualToString:@"竖向"]) {
+        return CGSizeMake(self.frame.size.width, 40);
+    }
     return CGSizeMake(self.cellWeight, self.frame.size.height);
 }
 #pragma mark - 上下左右间距
@@ -106,83 +112,97 @@
     self.ClickTitleReturn(self.titleArr[indexPath.row]);
     [self reloadData];
 }
+#pragma mark - 标题文字
 -(void)setTitleArr:(NSArray *)titleArr{
     _titleArr = titleArr;
     [self reloadData];
 }
-//底线高度
+#pragma mark - 底线高度
 -(void)setBottomLinHeight:(CGFloat)bottomLinHeight{
     _bottomLinHeight = bottomLinHeight;
     if (_bottomLinHeight) {
         [self reloadData];
     }
 }
-//选中底线图片
+#pragma mark - 选中底线图片
 -(void)setBottomLinImage:(UIImage *)bottomLinImage{
     _bottomLinImage = bottomLinImage;
     if (_bottomLinImage) {
         [self reloadData];
     }
 }
-//标题字体
+#pragma mark - 标题字体
 -(void)setTextLabFont:(UIFont *)textLabFont{
     _textLabFont = textLabFont;
     if (_textLabFont) {
         [self reloadData];
     }
 }
-//选中标题字体
+#pragma mark - 选中标题字体
 -(void)setTextSeletedLabFont:(UIFont *)textSeletedLabFont{
     _textSeletedLabFont = textSeletedLabFont;
     if (_textSeletedLabFont) {
         [self reloadData];
     }
 }
-//字体颜色 默认黑色
+#pragma mark - 字体颜色 默认黑色
 -(void)setTextColor:(UIColor *)textColor{
     _textColor = textColor;
     if (_textColor) {
         [self reloadData];
     }
 }
+#pragma mark - 选中字体颜色 默认黑色
 -(void)setTextSeltedColor:(UIColor *)textSeltedColor{
     _textSeltedColor = textSeltedColor;
     if (_textSeltedColor) {
         [self reloadData];
     }
 }
-//选中文字底线颜色
+#pragma mark - 选中文字底线颜色
 -(void)setBottomLinColor:(UIColor *)bottomLinColor{
     _bottomLinColor = bottomLinColor;
     if (_bottomLinColor) {
         [self reloadData];
     }
 }
-//选中底线颜色,默认红色
+#pragma mark - 选中底线颜色,默认红色
 -(void)setBottomLinSeltedColor:(UIColor *)bottomLinSeltedColor{
     _bottomLinSeltedColor = bottomLinSeltedColor;
     if (_bottomLinSeltedColor) {
         [self reloadData];
     }
 }
-//选中底线图片
+#pragma mark - 选中底线图片
 -(void)setBottomSeletdLinImage:(UIImage *)bottomSeletdLinImage{
     _bottomSeletdLinImage = bottomSeletdLinImage;
     if (_bottomSeletdLinImage) {
         [self reloadData];
     }
 }
-//未选中背景色
+#pragma mark - 未选中背景色
 -(void)setBackColor:(UIColor *)backColor{
     _backColor = backColor;
     if (_backColor) {
         [self reloadData];
     }
 }
-//选中背景色
+#pragma mark - 选中背景色
 -(void)setBackSeletedColor:(UIColor *)backSeletedColor{
     _backSeletedColor = backSeletedColor;
     if (_backColor) {
+        [self reloadData];
+    }
+}
+#pragma mark - 滚动方向
+-(void)setRollingDirection:(NSString *)rollingDirection{
+    _rollingDirection = rollingDirection;
+    if ([_rollingDirection isEqualToString:@"横向"]) {
+        self.flow.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        [self reloadData];
+    }
+    if ([_rollingDirection isEqualToString:@"竖向"]) {
+        self.flow.scrollDirection = UICollectionViewScrollDirectionVertical;
         [self reloadData];
     }
 }
