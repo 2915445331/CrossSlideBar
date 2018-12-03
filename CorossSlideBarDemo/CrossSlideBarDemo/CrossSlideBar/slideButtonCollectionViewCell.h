@@ -23,4 +23,8 @@
 @property(nonatomic,strong)UIColor * bottomLinColor;
 //背景色
 @property(nonatomic,strong)UIColor * backSeletedColor;
+//边框颜色
+@property(nonatomic,strong)UIColor * borderColor;
+//选中边框宽度
+@property(nonatomic,assign)CGFloat  borderWidth;
 @end

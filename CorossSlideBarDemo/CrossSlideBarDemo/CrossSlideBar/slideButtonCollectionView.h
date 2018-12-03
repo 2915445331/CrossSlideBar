@@ -33,8 +33,14 @@
 @property(nonatomic,strong)UIColor * backSeletedColor;
 //选中标题字体 默认16
 @property(nonatomic,strong)UIFont * textSeletedLabFont;
-//底线高度 默认2
+//底线高度 默认2 注意设置边框则不能设置底线否则底线将会不显示
 @property(nonatomic,assign)CGFloat bottomLinHeight;
+//选中边框颜色默认透明
+@property(nonatomic,strong)UIColor * borderSeletedColor;
+//未选中边框颜色默认透明
+@property(nonatomic,strong)UIColor * borderColor;
+//选中边框宽度 默认0 注意设置边框则不能设置底线否则底线将会不显示
+@property(nonatomic,assign)CGFloat  borderWidth;
 /*图片颜色二选一 如若两者都设置默认用图片显示*/
 //底线图片
 @property(nonatomic,strong)UIImage * bottomLinImage;

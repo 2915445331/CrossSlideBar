@@ -40,13 +40,16 @@
 -(slideButtonCollectionView *)slideButtonV{
     if (!_slideButtonV) {
         _slideButtonV = [[slideButtonCollectionView alloc]initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 30)];
-        _slideButtonV.titleArr = @[@"牙尚阿萨德发卡上氨基酸看到你发卡机阿里斯顿法琳娜爱上劳动法，什么都能否啊，什么地方那，你",@"童话",@"孕记",@"牙圈",@"人物",@"专题"];
+        _slideButtonV.titleArr = @[@"牙尚",@"童话",@"孕记",@"牙圈",@"人物",@"专题"];
         _slideButtonV.cellIndexPath = 100;
+//        _slideButtonV.bottomLinHeight = 1;
+        _slideButtonV.borderWidth = 2;
+        _slideButtonV.borderSeletedColor = [UIColor blueColor];
 //        _slideButtonV.cellWeight = @"100";
-        _slideButtonV.textColor = [UIColor blackColor];
-        _slideButtonV.textSeltedColor = [UIColor whiteColor];
-        _slideButtonV.bottomLinSeltedColor = [UIColor redColor];
-        _slideButtonV.backSeletedColor = [UIColor redColor];
+        _slideButtonV.textColor = [UIColor orangeColor];
+        _slideButtonV.textSeltedColor = [UIColor purpleColor];
+//        _slideButtonV.bottomLinSeltedColor = [UIColor redColor];
+        _slideButtonV.backSeletedColor = [UIColor yellowColor];
         _slideButtonV.ClickTitleReturn = ^(NSString *titleIndex) {
             NSLog(@"%@",titleIndex);
         };

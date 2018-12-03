@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CrossSlideBar"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "A customizable horizontal slider.(一个可自定义的水平滑块。)"
   s.description  = <<-DESC
 		   The main documentation for this project is "CrossSlideBar" You can download this file for the sliding title effect.

@@ -88,4 +88,12 @@
     _backSeletedColor = backSeletedColor;
     self.backgroundV.backgroundColor = _backSeletedColor;
 }
+-(void)setBorderWidth:(CGFloat)borderWidth{
+    _borderWidth = borderWidth;
+    self.contentView.layer.borderWidth = _borderWidth;
+}
+-(void)setBorderColor:(UIColor *)borderColor{
+    _borderColor = borderColor;
+    self.contentView.layer.borderColor = self.borderColor.CGColor;
+}
 @end

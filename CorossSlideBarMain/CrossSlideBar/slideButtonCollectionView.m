@@ -39,6 +39,9 @@
         self.textColor = [UIColor blackColor];
         self.bottomLinImage = [UIImage imageNamed:@""];
         self.rollingDirection = @"横向";
+        self.borderWidth = 0;
+        self.borderSeletedColor = [UIColor clearColor];
+        self.borderColor = [UIColor clearColor];
     }
     return self;
 }
@@ -93,9 +96,12 @@
     slideButtonCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"slideButtonCollectionViewCell" forIndexPath:indexPath];
     cell.textTitleString = self.titleArr[indexPath.row];
     cell.bottomLinHeight = self.bottomLinHeight;
+    cell.borderWidth = self.borderWidth;
+#pragma mark - 如若选中
     if (self.cellIndexPath == indexPath.row) {
         cell.textLabFont = self.textSeletedLabFont;
         cell.textColor = self.textSeltedColor;
+        cell.borderColor = self.borderSeletedColor;
         if (self.bottomSeletdLinImage) {
             cell.bottomLinColor = [UIColor clearColor];
         }
@@ -105,12 +111,14 @@
         cell.bottomLinImage = self.bottomSeletdLinImage;
         cell.backSeletedColor = self.backSeletedColor;
     }
+#pragma mark - 如若未选中
     else{
         cell.textLabFont = self.textLabFont;
         cell.textColor = self.textColor;
         cell.bottomLinImage = self.bottomLinImage;
         cell.bottomLinColor = self.bottomLinColor;
         cell.backSeletedColor = self.backColor;
+        cell.borderColor = self.borderColor;
     }
     return cell;
 }
@@ -253,6 +261,21 @@
 }
 -(void)setCellHeight:(NSString *)cellHeight{
     _cellHeight = cellHeight;
+    [self reloadData];
+}
+#pragma mark - 设置边框宽度
+-(void)setBorderWidth:(CGFloat)borderWidth{
+    _borderWidth = borderWidth;
+    [self reloadData];
+}
+#pragma mark - 设置选中边框颜色
+-(void)setBorderSeletedColor:(UIColor *)borderSeletedColor{
+    _borderSeletedColor = borderSeletedColor;
+    [self reloadData];
+}
+#pragma mark - 设置未选边框颜色
+-(void)setBorderColor:(UIColor *)borderColor{
+    _borderColor = borderColor;
     [self reloadData];
 }
 /*
