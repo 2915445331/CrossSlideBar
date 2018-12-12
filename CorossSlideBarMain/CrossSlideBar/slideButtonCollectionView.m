@@ -49,6 +49,7 @@
     if (!_flow) {
         //创建流布局对象
         _flow = [[UICollectionViewFlowLayout alloc]init];
+        _flow.minimumLineSpacing = 0;
     }
     return _flow;
 }
