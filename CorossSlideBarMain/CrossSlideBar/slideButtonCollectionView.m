@@ -9,7 +9,7 @@
 #import "slideButtonCollectionView.h"
 #import "slideButtonCollectionViewCell.h"
 #import "slideButtonFooterView.h"
-@interface slideButtonCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface slideButtonCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 //布局流
 @property(nonatomic,strong)UICollectionViewFlowLayout * flow;
 @end
@@ -24,7 +24,7 @@
         self.showsHorizontalScrollIndicator = NO;
         // 为网格注册单于格类
         [self registerClass:[slideButtonCollectionViewCell class] forCellWithReuseIdentifier:@"slideButtonCollectionViewCell"];
-        
+
         //        注册页尾
         [self registerClass:[slideButtonFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"slideButtonFooterView"];
         self.cellWeight = @"0";
@@ -42,6 +42,8 @@
         self.borderWidth = 0;
         self.borderSeletedColor = [UIColor clearColor];
         self.borderColor = [UIColor clearColor];
+        self.minimumitemSpacing = 0;
+        self.minimumLineSpacing = 0;
     }
     return self;
 }
@@ -50,6 +52,7 @@
         //创建流布局对象
         _flow = [[UICollectionViewFlowLayout alloc]init];
         _flow.minimumLineSpacing = 0;
+        _flow.minimumInteritemSpacing = 0;
     }
     return _flow;
 }
@@ -63,11 +66,22 @@
     
     return self.titleArr.count;
 }
+#pragma mark - 两个cell之间的最小间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return self.minimumitemSpacing;
+}
+
+#pragma mark - 两行之间的最小间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return self.minimumLineSpacing;
+}
 #pragma mark - 单元格大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([_rollingDirection isEqualToString:@"横向"]) {
         if ([self.cellWeight floatValue] <= 0) {
-            CGFloat collectionCellW = [self calculateRowWidth:self.titleArr[indexPath.row] Fount:self.textLabFont andHeight:self.frame.size.height]+20;
+             CGFloat collectionCellW = [self calculateRowWidth:self.titleArr[indexPath.row] Fount:self.textLabFont andHeight:self.frame.size.height]+20;
             return CGSizeMake(collectionCellW, self.frame.size.height);
         }
         else{
@@ -97,8 +111,15 @@
     slideButtonCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"slideButtonCollectionViewCell" forIndexPath:indexPath];
     cell.textTitleString = self.titleArr[indexPath.row];
     cell.bottomLinHeight = self.bottomLinHeight;
+    if (self.bottomLinWeight > 0) {
+        cell.bottomLinWeight = self.bottomLinWeight;
+    }
+    else{
+         CGFloat collectionCellW = [self calculateRowWidth:self.titleArr[indexPath.row] Fount:self.textLabFont andHeight:self.frame.size.height]+20;
+        cell.bottomLinWeight = collectionCellW;
+    }
     cell.borderWidth = self.borderWidth;
-#pragma mark - 如若选中
+    #pragma mark - 如若选中
     if (self.cellIndexPath == indexPath.row) {
         cell.textLabFont = self.textSeletedLabFont;
         cell.textColor = self.textSeltedColor;
@@ -112,7 +133,7 @@
         cell.bottomLinImage = self.bottomSeletdLinImage;
         cell.backSeletedColor = self.backSeletedColor;
     }
-#pragma mark - 如若未选中
+    #pragma mark - 如若未选中
     else{
         cell.textLabFont = self.textLabFont;
         cell.textColor = self.textColor;
@@ -279,12 +300,32 @@
     _borderColor = borderColor;
     [self reloadData];
 }
+#pragma mark - 设置行间距
+-(void)setMinimumitemSpacing:(CGFloat)minimumitemSpacing{
+    _minimumitemSpacing = minimumitemSpacing;
+    if (_minimumitemSpacing) {
+        [self reloadData];
+    }
+}
+#pragma mark - 设置列间距
+-(void)setMinimumLineSpacing:(CGFloat)minimumLineSpacing{
+    _minimumLineSpacing = minimumLineSpacing;
+    if (_minimumLineSpacing) {
+        [self reloadData];
+    }
+}
+-(void)setBottomLinWeight:(CGFloat)bottomLinWeight{
+    _bottomLinWeight = bottomLinWeight;
+    if (_bottomLinWeight) {
+        [self reloadData];
+    }
+}
 /*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end

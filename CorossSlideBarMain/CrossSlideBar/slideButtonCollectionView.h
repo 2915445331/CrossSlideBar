@@ -17,8 +17,12 @@
 @property(nonatomic,strong)NSString * rollingDirection;
 //设置标题宽度 默认 @"0"（仅限横向，竖向默认控件宽度且无法更改,注意如若设置过cellWeight将改变所有标题同一宽度）如若不设置将自动计算 titleArr 宽度
 @property(nonatomic,strong)NSString * cellWeight;
-//设置标题宽度 默认 @"0"（仅限竖向，横向默认控件高度且无法更改,注意如若设置过cellHeight 将改变所有标题同一高度）如若不设置将自动计算 titleArr 高度
+//设置标题高度 默认 @"0"（仅限竖向，横向默认控件高度且无法更改,注意如若设置过cellHeight 将改变所有标题同一高度）如若不设置将自动计算 titleArr 高度
 @property(nonatomic,strong)NSString * cellHeight;
+//设置行间距默认为0
+@property(nonatomic,assign)CGFloat minimumitemSpacing;
+//设置列间距默认为0
+@property(nonatomic,assign)CGFloat minimumLineSpacing;
 //标题数组
 @property(nonatomic,strong)NSArray * titleArr;
 //标题字体 默认14
@@ -35,6 +39,8 @@
 @property(nonatomic,strong)UIFont * textSeletedLabFont;
 //底线高度 默认2 注意设置边框则不能设置底线否则底线将会不显示
 @property(nonatomic,assign)CGFloat bottomLinHeight;
+//设置底线宽度 默认文字宽度 不能传0否则依旧是文字宽度
+@property(nonatomic,assign)CGFloat bottomLinWeight;
 //选中边框颜色默认透明
 @property(nonatomic,strong)UIColor * borderSeletedColor;
 //未选中边框颜色默认透明

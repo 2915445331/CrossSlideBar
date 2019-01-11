@@ -71,8 +71,9 @@
 -(void)setBottomLinHeight:(CGFloat)bottomLinHeight{
     _bottomLinHeight = bottomLinHeight;
     CGFloat textHeight = self.contentView.frame.size.height-self.bottomLinHeight;
+    CGFloat bottomLinX = (self.contentView.frame.size.width * 0.5)-(_bottomLinWeight * 0.5);
     self.textTitileLab.frame = CGRectMake(0, 0, self.contentView.frame.size.width, textHeight);
-    self.bottomLinView.frame = CGRectMake(0,textHeight, self.contentView.frame.size.width, self.bottomLinHeight);
+    self.bottomLinView.frame = CGRectMake(bottomLinX,textHeight, _bottomLinWeight, self.bottomLinHeight);
 }
 -(void)setBottomLinImage:(UIImage *)bottomLinImage{
     _bottomLinImage = bottomLinImage;
@@ -95,5 +96,12 @@
 -(void)setBorderColor:(UIColor *)borderColor{
     _borderColor = borderColor;
     self.contentView.layer.borderColor = self.borderColor.CGColor;
+}
+-(void)setBottomLinWeight:(CGFloat)bottomLinWeight{
+    _bottomLinWeight = bottomLinWeight;
+    CGFloat textHeight = self.contentView.frame.size.height-self.bottomLinHeight;
+    CGFloat bottomLinX = (self.contentView.frame.size.width * 0.5)-(_bottomLinWeight * 0.5);
+    self.textTitileLab.frame = CGRectMake(0, 0, self.contentView.frame.size.width, textHeight);
+    self.bottomLinView.frame = CGRectMake(bottomLinX,textHeight, _bottomLinWeight, self.bottomLinHeight);
 }
 @end

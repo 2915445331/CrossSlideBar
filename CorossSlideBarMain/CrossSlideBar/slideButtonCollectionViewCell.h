@@ -27,4 +27,6 @@
 @property(nonatomic,strong)UIColor * borderColor;
 //选中边框宽度
 @property(nonatomic,assign)CGFloat  borderWidth;
+//设置底线宽度 默认文字宽度
+@property(nonatomic,assign)CGFloat bottomLinWeight;
 @end
