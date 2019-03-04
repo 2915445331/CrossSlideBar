@@ -109,8 +109,11 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     slideButtonCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"slideButtonCollectionViewCell" forIndexPath:indexPath];
+//    显示文字
     cell.textTitleString = self.titleArr[indexPath.row];
+//    底线高度
     cell.bottomLinHeight = self.bottomLinHeight;
+//    底线宽度
     if (self.bottomLinWeight > 0) {
         cell.bottomLinWeight = self.bottomLinWeight;
     }
@@ -118,6 +121,7 @@
          CGFloat collectionCellW = [self calculateRowWidth:self.titleArr[indexPath.row] Fount:self.textLabFont andHeight:self.frame.size.height]+20;
         cell.bottomLinWeight = collectionCellW;
     }
+//    边框宽度
     cell.borderWidth = self.borderWidth;
     #pragma mark - 如若选中
     if (self.cellIndexPath == indexPath.row) {
@@ -314,6 +318,7 @@
         [self reloadData];
     }
 }
+#pragma mark - 设置底线宽度
 -(void)setBottomLinWeight:(CGFloat)bottomLinWeight{
     _bottomLinWeight = bottomLinWeight;
     if (_bottomLinWeight) {
