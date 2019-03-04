@@ -2,7 +2,7 @@
 A customizable horizontal slider.
 The main documentation for this project is "CrossSlideBar" You can download this file for the sliding title effect.
 
-# integration method
+# Manual import
 Drag and drop CrossSlideBarr under CrossSlideBarMain into the project.
 Add a header file # import "slideButtonCollectionView. h".
 
