@@ -29,3 +29,5 @@ Add a header file # import "slideButtonCollectionView. h".
     }
 ## viewDidLoad
     [self.view addSubview:self.slideButtonV];
+
+简书地址 :   https://www.jianshu.com/p/2fced3826a8c
