@@ -53,7 +53,8 @@
     [super layoutSubviews];
     CGFloat textHeight = self.contentView.frame.size.height-self.bottomLinHeight;
     self.textTitileLab.frame = CGRectMake(0, 0, self.contentView.frame.size.width, textHeight);
-    self.bottomLinView.frame = CGRectMake(0,textHeight, self.contentView.frame.size.width, self.bottomLinHeight);
+    CGFloat bottomLinX = (self.contentView.frame.size.width * 0.5)-(_bottomLinWeight * 0.5);
+    self.bottomLinView.frame = CGRectMake(bottomLinX,textHeight, self.bottomLinWeight, self.bottomLinHeight);
     self.backgroundV.frame = self.contentView.frame;
 }
 -(void)setTextTitleString:(NSString *)textTitleString{

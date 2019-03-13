@@ -44,7 +44,7 @@
         _slideButtonV.cellIndexPath = 100;
         _slideButtonV.bottomLinHeight = 2;
         _slideButtonV.bottomLinWeight = 10;
-        _slideButtonV.borderWidth = 0;
+//        _slideButtonV.borderWidth = 0;
         _slideButtonV.borderSeletedColor = [UIColor blueColor];
 //        _slideButtonV.cellWeight = @"100";
         _slideButtonV.textColor = [UIColor orangeColor];
