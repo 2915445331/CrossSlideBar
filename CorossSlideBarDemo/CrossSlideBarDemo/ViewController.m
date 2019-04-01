@@ -40,7 +40,7 @@
 -(slideButtonCollectionView *)slideButtonV{
     if (!_slideButtonV) {
         _slideButtonV = [[slideButtonCollectionView alloc]initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 30)];
-        _slideButtonV.titleArr = @[@"牙尚",@"童话",@"孕记",@"牙圈",@"人物",@"专题"];
+        _slideButtonV.titleArr = @[@"牙尚",@"童话",@"孕记",@"牙圈",@"人物",@"专题",@"牙尚",@"童话",@"孕记",@"牙圈",@"人物",@"专题",@"牙尚",@"童话",@"孕记",@"牙圈",@"人物",@"专题"];
         _slideButtonV.cellIndexPath = 100;
         _slideButtonV.bottomLinHeight = 2;
         _slideButtonV.bottomLinWeight = 10;

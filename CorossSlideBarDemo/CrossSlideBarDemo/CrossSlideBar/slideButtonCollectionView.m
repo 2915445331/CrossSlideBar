@@ -151,7 +151,12 @@
 #pragma mark - 点击单元格
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     self.cellIndexPath = indexPath.row;
-    [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    if ([_rollingDirection isEqualToString:@"横向"]) {
+        [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+    else{
+        [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    }
     self.ClickTitleReturn(self.titleArr[indexPath.row]);
     [self reloadData];
 }
