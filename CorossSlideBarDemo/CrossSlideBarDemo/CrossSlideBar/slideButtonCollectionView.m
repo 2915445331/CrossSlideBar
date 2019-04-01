@@ -284,6 +284,12 @@
     else{
         _cellIndexPath = self.titleArr.count-1;
     }
+    if ([_rollingDirection isEqualToString:@"横向"]) {
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_cellIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+    else{
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_cellIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    }
 }
 #pragma mark - 设置标题宽度
 -(void)setCellWeight:(NSString *)cellWeight{
