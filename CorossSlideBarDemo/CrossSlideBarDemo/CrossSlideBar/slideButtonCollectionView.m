@@ -284,11 +284,13 @@
     else{
         _cellIndexPath = self.titleArr.count-1;
     }
-    if ([_rollingDirection isEqualToString:@"横向"]) {
-        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_cellIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    }
-    else{
-        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_cellIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    if (_automatic) {
+        if ([_rollingDirection isEqualToString:@"横向"]) {
+            [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_cellIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        }
+        else{
+            [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_cellIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+        }
     }
 }
 #pragma mark - 设置标题宽度
@@ -335,6 +337,10 @@
     if (_bottomLinWeight) {
         [self reloadData];
     }
+}
+#pragma mark - 自动调整
+-(void)setAutomatic:(BOOL)automatic{
+    _automatic = automatic;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

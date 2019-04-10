@@ -13,6 +13,8 @@
 @property(nonatomic,copy)void (^ClickTitleReturn) (NSString * titleIndex);
 //手动设置选中
 @property(nonatomic,assign)NSInteger cellIndexPath;
+//是否允许自动调整当前选中位置
+@property(nonatomic,assign)BOOL automatic;
 //滚动方向(横向、竖向 填写其他默认横向)
 @property(nonatomic,strong)NSString * rollingDirection;
 //设置标题宽度 默认 @"0"（仅限横向，竖向默认控件宽度且无法更改,注意如若设置过cellWeight将改变所有标题同一宽度）如若不设置将自动计算 titleArr 宽度
