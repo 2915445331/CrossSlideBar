@@ -17,7 +17,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
     if (self = [super initWithFrame:frame collectionViewLayout:self.flow]) {
-        self.backgroundColor = [UIColor whiteColor];
         self.delegate = self;
         self.dataSource = self;
         self.showsVerticalScrollIndicator = NO;
